@@ -67,7 +67,7 @@ animes.get('/', async (req, res) => {
     res.status(200).json(oneAnime) :
     res.status(500).json({error: "Anime not found."});
 
-})post('/', async (req, res) => {
+}).post('/', async (req, res) => {
 
   const anime = await createOneAnime(req.body);
 
