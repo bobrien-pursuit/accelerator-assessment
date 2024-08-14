@@ -8,6 +8,7 @@ const cn = {
   user: PG_USER,
   port: PG_PORT,
   database: PG_DATABASE,
+  password: '5432',
   allowExitOnIdle: true,
 };
 

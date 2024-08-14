@@ -50,30 +50,36 @@ const {
 //   "description": "this is anime as well"
 // }
 
-animes.get('/', async (req, res) => {
+animes.route('/')
 
-  const allAnimes = getAllAnimes();
+.get(async (req, res) => {
+
+  const allAnimes = await getAllAnimes();
 
     allAnimes[0] ? 
     res.status(200).json(allAnimes) :
     res.status(500).json({error: "Server error."});
 
-}).get('/:id', async (req, res) => {
+})
+.post(async (req, res) => {
+  
+  const anime = await createOneAnime(req.body);
+  
+  res.status(201).json(anime);
+  
+});
+
+animes.route('/:id')
+.get( async (req, res) => {
 
   const {id} = req.params;
   const oneAnime = await getOneAnime(id);
 
     oneAnime ? 
     res.status(200).json(oneAnime) :
-    res.status(500).json({error: "Anime not found."});
-
-}).post('/', async (req, res) => {
-
-  const anime = await createOneAnime(req.body);
-
-    res.status(201).json(anime);
-
-}).put('/:id', async (req, res) => {
+    res.status(500).json({error: "Anime not found."})
+})
+.put(async (req, res) => {
 
   const {id} = req.params;
   const updatedAnime = await updateOneAnime(id, req.body);
@@ -82,7 +88,8 @@ animes.get('/', async (req, res) => {
     res.status(200).json(updatedAnime) :
     res.status(400).json({error: "Anime not found." });
 
-}).delete('/:id', async(req, res) => {
+})
+.delete(async (req, res) => {
 
   const {id} = req.params;
   const deletedAnime = await deleteOneAnime(id);
@@ -91,6 +98,6 @@ animes.get('/', async (req, res) => {
     res.status(200).json({message: "Anime deleted."}) :
     res.status(400).json({error: "Anime not found."});
 
-})
+});
 
 module.exports = animes;
