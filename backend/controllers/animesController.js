@@ -72,6 +72,7 @@ animes.route('/')
 });
 
 animes.route('/:id')
+
 .get( async (req, res) => {
 
   const { id } = req.params;

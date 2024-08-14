@@ -21,6 +21,7 @@ function Animes() {
 
   return (
     <section className="index" id="anime-list">
+      <div className="anime-blackbox"></div>
       <table>
         <tbody>
       {animes.map((anime) => {
