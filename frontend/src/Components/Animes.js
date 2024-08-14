@@ -21,14 +21,13 @@ function Animes() {
 
   return (
     <section className="index" id="anime-list">
-      <div className="anime-blackbox"></div>
-      <table>
+          <table>
         <tbody>
       {animes.map((anime) => {
         return <Anime key={anime.id} name={anime.name} description={anime.description}/>
       })}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
     </section>
   );
 }
