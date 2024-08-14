@@ -65,9 +65,9 @@ animes.route('/')
   
   const anime = await createOneAnime(req.body);
   
-  anime.id ?
-  res.status(201).json(anime):
-  res.status(500).json({error: "Database is down."})
+    anime.id ?
+    res.status(201).json(anime):
+    res.status(500).json({error: "Database is down."})
   
 });
 
