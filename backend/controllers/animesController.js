@@ -63,16 +63,18 @@ animes.route('/')
 })
 .post(async (req, res) => {
   
-  const anime = await createOneAnime(res.body);
+  const anime = await createOneAnime(req.body);
   
-  res.status(201).json(anime);
+  anime.id ?
+  res.status(201).json(anime):
+  res.status(500).json({error: "Database is down."})
   
 });
 
 animes.route('/:id')
 .get( async (req, res) => {
 
-  const {id} = req.params;
+  const { id } = req.params;
   const oneAnime = await getOneAnime(id);
 
     oneAnime ? 
@@ -81,22 +83,22 @@ animes.route('/:id')
 })
 .put(async (req, res) => {
 
-  const {id} = req.params;
-  const updatedAnime = await updateOneAnime(id, res.body);
+  const { id } = req.params;
+  const updatedAnime = await updateOneAnime(id, req.body);
 
     updatedAnime.id ? 
     res.status(200).json(updatedAnime) :
-    res.status(400).json({error: "Anime not found." });
+    res.status(500).json({error: "Anime not found." });
 
 })
 .delete(async (req, res) => {
 
-  const {id} = req.params;
+  const { id } = req.params;
   const deletedAnime = await deleteOneAnime(id);
 
     deletedAnime.id ? 
     res.status(200).json({message: "Anime deleted."}) :
-    res.status(400).json({error: "Anime not found."});
+    res.status(500).json({error: "Anime not found."});
 
 });
 
