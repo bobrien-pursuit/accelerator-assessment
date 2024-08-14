@@ -50,5 +50,12 @@ body {
   flex-direction: row;
 }
 
+table, tbody {
+  background-color: #F7F4EC;
+  width: 800px;
+  height: 200px;
+  border: 2px solid black;
+  margin: auto auto;
+}
 
 

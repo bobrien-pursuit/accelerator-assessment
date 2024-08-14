@@ -21,9 +21,13 @@ function Animes() {
 
   return (
     <section className="index" id="anime-list">
+      <table>
+        <tbody>
       {animes.map((anime) => {
         return <Anime key={anime.id} name={anime.name} description={anime.description}/>
       })}
+        </tbody>
+      </table>
     </section>
   );
 }
