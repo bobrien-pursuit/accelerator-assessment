@@ -63,7 +63,7 @@ animes.route('/')
 })
 .post(async (req, res) => {
   
-  const anime = await createOneAnime(req.body);
+  const anime = await createOneAnime(res.body);
   
   res.status(201).json(anime);
   
@@ -82,7 +82,7 @@ animes.route('/:id')
 .put(async (req, res) => {
 
   const {id} = req.params;
-  const updatedAnime = await updateOneAnime(id, req.body);
+  const updatedAnime = await updateOneAnime(id, res.body);
 
     updatedAnime.id ? 
     res.status(200).json(updatedAnime) :
